@@ -8,10 +8,10 @@ public:
 	Animal() { cout << "Animal add" << endl; }
 	virtual ~Animal() { cout << "Animal delete" << endl; }
 
-	void eat(void) { cout << "동물먹이" << endl; }
-	//roar함수를 가상함수테이블에 등록(동적 바인딩)
+	//함수를 가상함수테이블에 등록(동적 바인딩)
+	virtual void eat(void) { cout << "동물먹이" << endl; }
 	virtual void roar(void) { cout << "동물짖어" << endl; }
-	void walk(void) { cout << "동물걸어" << endl; }
+	virtual void walk(void) { cout << "동물걸어" << endl; }
 
 private:
 	string name;
@@ -23,7 +23,9 @@ class Tiger : public Animal {
 public:
 	Tiger() { cout << "Tigel add" << endl; }
 	virtual ~Tiger() { cout << "Tigel delete" << endl; }
+	void eat(void) override { cout << "쩝ㅉ저ㅉㅂ" << endl; }
 	void roar(void) override { cout << "어흥" << endl; }
+	void walk(void) override { cout << "찹차차ㅂ" << endl; }
 };
 
 class Dog : public Animal {
@@ -35,6 +37,7 @@ public:
 
 void main(void)
 {
-	Animal* animal = new Animal();
+	Animal* animal = new Tiger();
+	animal->eat();
 	delete animal;
 }
