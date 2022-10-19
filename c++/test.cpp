@@ -1,35 +1,38 @@
 #include <iostream>
 #include <string>
+#include <map>
 
 using namespace std;
 
-template <typename T1, typename T2>
-class Character {
-public:
+//김신 공유
+//지은탁 김고은
+//저승사자 이동욱
+//써니 유인나
 
-	Character(T1 _name, T2 _hp, T2 _offense, T2 _defense)
-		:name(_name), hp(_hp), offense(_offense), defense(_defense) {}
-
-	void print(void)
-	{
-		cout << "이름 " << name << endl;
-		cout << "체력 " << hp << endl;
-		cout << "공격 " << offense << endl;
-		cout << "방어 " << defense << endl;
-	}
-
-private:
-	T1 name;
-	T2 hp;
-	T2 offense;
-	T2 defense;
-};
+//arr["김신"] = 공유
 
 int main(void)
 {
-	Character<string, int>* juin= new Character<string, int>("주인공", 1, 999999, 10);
-	juin->print();
-	delete juin;
+	//map<key자료형, value자료형
+	map<string, string> m;
+
+	m["김신"] = "공유";
+	m["지은탁"] = "김고은";
+	m["저승사자"] = "이동욱";
+	m["써니"] = "유인나";
+
+	map<string, string>::iterator iter;
+
+	//백터의 원소들을 출력(iterator)
+	//삽입할때마다 key는 자동정렬
+	for (iter = m.begin(); iter != m.end(); iter++)
+	{
+		cout << iter->first << "역" << iter->second << "분" << endl;
+	}
+	cout << endl;
+
+	//key가 존재하는지 체크
+	cout << "주인공은 " << m["김신"] << endl;
 
 	return 0;
 }
